@@ -1,4 +1,9 @@
 const { User } = require("../../db");
+const bcrypt = require('bcrypt');
+
+function hashPassword(password) {
+    return bcrypt.hash(password, 10);
+}
 
 const postUser = async (
     name,
@@ -12,17 +17,23 @@ const postUser = async (
     if (exist) {
         throw new Error("Ya hay un usuario con es nombre")
     } else {
-        const newUser = await User.create({
-            name,
-            lastname,
-            celNumber,
-            password,
-            vip: false,
-            spamHour:false,
-            spamDay:false,
-            spamService:false
-        })
+        const passHash = await hashPassword(password)
+        if (passHash){
+            const newUser = await User.create({
+                name,
+                lastname,
+                celNumber,
+                password:passHash,
+                vip: false,
+                spamHour: false,
+                spamDay: false,
+                spamService: false
+            })
         return newUser;
+        }else{
+            console.log("error");
+        }
+
     }
 };
 
