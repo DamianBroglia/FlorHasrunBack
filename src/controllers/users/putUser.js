@@ -1,4 +1,9 @@
 const { User } = require("../../db")
+const bcrypt = require('bcrypt');
+
+function hashPassword(password) {
+    return bcrypt.hash(password, 10);
+}
 
 const putUser = async (userId, celNumber, password, vip, spamHour, spamDay, spamService) => {
     const user = await User.findByPk(userId)
@@ -7,7 +12,8 @@ const putUser = async (userId, celNumber, password, vip, spamHour, spamDay, spam
         user.celNumber = celNumber
     }
     if (password) {
-        user.password = password
+        const passHash = await hashPassword(password)
+        user.password = passHash
     }
     if (vip) {
         user.vip = true
