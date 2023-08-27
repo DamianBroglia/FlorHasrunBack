@@ -24,6 +24,8 @@ const postUser = async (
                 lastname,
                 celNumber,
                 password:passHash,
+                verified:false,
+                credits:"0",
                 vip: false,
                 spamHour: false,
                 spamDay: false,

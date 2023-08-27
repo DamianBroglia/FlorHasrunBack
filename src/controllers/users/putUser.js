@@ -5,7 +5,7 @@ function hashPassword(password) {
     return bcrypt.hash(password, 10);
 }
 
-const putUser = async (userId, celNumber, password, vip, spamHour, spamDay, spamService) => {
+const putUser = async (userId, celNumber, password, verified, credits, vip, spamHour, spamDay, spamService) => {
     const user = await User.findByPk(userId)
 
     if (celNumber) {
@@ -15,26 +15,24 @@ const putUser = async (userId, celNumber, password, vip, spamHour, spamDay, spam
         const passHash = await hashPassword(password)
         user.password = passHash
     }
-    if (vip) {
-        user.vip = true
-    } else {
-        user.vip = false
+    if(vip !== undefined){
+        user.vip = vip
     }
-    if(spamHour){
-        user.spamHour = true
-    }else{
-        user.spamHour = false
+    if (verified) {
+        user.verified = true
     }
-    if(spamDay){
-        user.spamDay = true
-    }else{
-        user.spamDay = false
+    if (credits) {
+        user.credits = credits
     }
-    if(spamService){
-        user.spamService = true
-    }else{
-        user.spamService = false
-    }
+    if (spamHour !== undefined) {
+        user.spamHour = spamHour
+    } 
+    if (spamDay !== undefined) {
+        user.spamDay = spamDay
+    } 
+    if (spamService !== undefined) {
+        user.spamService = spamService
+    } 
 
     await user.save()
     return user

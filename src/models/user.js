@@ -27,6 +27,14 @@ module.exports = (Sequelize) => {
             type: DataTypes.TEXT,
             allowNull: true,
         },
+        verified: {
+            type: DataTypes.BOOLEAN,
+            allowNull: true,
+        },
+        credits: {
+            type: DataTypes.ENUM("getCredit", "getCredit+1", "0", "1", "2", "3", "4"),
+            allowNull: true
+        },
         spamHour: {
             type: DataTypes.BOOLEAN,
             allowNull: true,

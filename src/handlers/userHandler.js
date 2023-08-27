@@ -36,8 +36,8 @@ const postUserHandler = async (req, res) => {
 
 const putUserHandler = async (req, res) => {
     try {
-        const { userId, celNumber, password, vip, spamHour, spamDay, spamService } = req.body;
-        const editUser = await putUser(userId, celNumber, password, vip, spamHour, spamDay, spamService);
+        const { userId, celNumber, password, verified, credits, vip, spamHour, spamDay, spamService } = req.body;
+        const editUser = await putUser(userId, celNumber, password, verified, credits, vip, spamHour, spamDay, spamService);
         res.status(200).json(editUser);
     } catch (error) {
         res.status(400).json(error.message);
