@@ -1,4 +1,4 @@
-const { User } = require("../../db")
+const { User, InfoUser } = require("../../db")
 const bcrypt = require('bcrypt');
 
 function hashPassword(password) {
@@ -6,7 +6,11 @@ function hashPassword(password) {
 }
 
 const putUser = async (userId, celNumber, password, verified, credits, vip, spamHour, spamDay, spamService) => {
-    const user = await User.findByPk(userId)
+    const user = await User.findByPk(userId, {
+        include: [
+            { model: InfoUser }
+        ]
+    })
 
     if (celNumber) {
         user.celNumber = celNumber

@@ -67,8 +67,8 @@ const postTurnHandler = async (req, res) => {
 
 const putTurnHandler = async (req, res) => {
     try {
-        const { turnId, userId, productId, dateInit, hourInit, state, cancel} = req.body;
-        const editTurn = await putTurn(turnId, userId, productId, dateInit, hourInit, state, cancel);
+        const { turnId, state} = req.body;
+        const editTurn = await putTurn(turnId, state);
         res.status(200).json(editTurn);
     } catch (error) {
         res.status(400).json(error.message);

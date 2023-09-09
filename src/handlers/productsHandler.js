@@ -25,7 +25,6 @@ const getProductByIdHandler = async (req, res) => {
 const postProductHandler = async (req, res) => {
     try {
         const { name, image, minimalDescription, description, duration, price } = req.body;
-        console.log("Llegó acá?");
         const newProduct = await postProduct(name, image, minimalDescription, description, duration, price)
         res.status(200).json(newProduct);
     } catch (error) {

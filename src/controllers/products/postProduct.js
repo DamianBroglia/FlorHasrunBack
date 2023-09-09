@@ -8,7 +8,6 @@ const postProduct = async (
     duration,
     price,
 ) => {
-    console.log("Llegó?");
     const newProduct = await Product.create({
         name,
         image,

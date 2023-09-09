@@ -1,52 +1,53 @@
 const { DataTypes } = require("sequelize")
 
 module.exports = (Sequelize) => {
-    Sequelize.define("user", {
+    Sequelize.define("infoUser", {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        name: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
-        lastname: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
-        celNumber: {
+        pasTurns: {
             type: DataTypes.INTEGER,
             allowNull: true,
         },
-        vip: {
-            type: DataTypes.BOOLEAN,
+        turnsTakedIt: {
+            type: DataTypes.INTEGER,
             allowNull: true,
         },
-        password: {
-            type: DataTypes.TEXT,
+        turnsFailed: {
+            type: DataTypes.INTEGER,
             allowNull: true,
         },
-        verified: {
-            type: DataTypes.BOOLEAN,
+        turnsCancel: {
+            type: DataTypes.INTEGER,
             allowNull: true,
         },
-        credits: {
-            type: DataTypes.ENUM("getCredit", "getCredit+1", "0", "1", "2", "3", "4"),
-            allowNull: true
-        },
-        spamHour: {
-            type: DataTypes.BOOLEAN,
+        totalPay: {
+            type: DataTypes.INTEGER,
             allowNull: true,
         },
-        spamDay: {
-            type: DataTypes.BOOLEAN,
+        loseForFail: {
+            type: DataTypes.INTEGER,
             allowNull: true,
         },
-        spamService: {
-            type: DataTypes.BOOLEAN,
+        totalTime: {
+            type: DataTypes.INTEGER,
             allowNull: true,
         },
+        loseTime: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+        },
+        averageAssists: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+        },
+        class: {
+            type: DataTypes.ENUM("A", "B", "C", "D", "E", "new"),
+            allowNull: true,
+        },
+
     },
         {
             timestamps: false

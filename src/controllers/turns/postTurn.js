@@ -13,7 +13,6 @@ const postTurn = async (
         price,
         userId,
         productId,
-        cancel: false,
         state: "toTake"
     })
     return newTurn;

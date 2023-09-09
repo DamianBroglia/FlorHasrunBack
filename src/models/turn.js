@@ -19,12 +19,8 @@ module.exports = (Sequelize) => {
             type: DataTypes.INTEGER,
             allowNull: true
         },
-        cancel: {
-            type: DataTypes.BOOLEAN,
-            allowNull: true
-        },
         state: {
-            type: DataTypes.ENUM("toTake", "takedIt", "failed", "canceled"),
+            type: DataTypes.ENUM("toTake", "takedIt", "failed", "cancelByUser", "cancelByAdmin"),
             allowNull: true
         }
 

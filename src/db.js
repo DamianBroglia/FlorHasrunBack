@@ -25,7 +25,7 @@ let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Comment, Product, Turn, User  } = sequelize.models;
+const { Comment, Product, Turn, User, InfoUser  } = sequelize.models;
 
 User.hasMany(Comment)
 Comment.belongsTo(User)
@@ -39,6 +39,8 @@ Turn.belongsTo(Product)
 Product.hasMany(Comment)
 Comment.belongsTo(Product)
 
+User.hasOne(InfoUser)
+InfoUser.belongsTo(User)
 
 module.exports = {
   ...sequelize.models, 
