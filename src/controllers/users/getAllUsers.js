@@ -4,7 +4,6 @@ const getAllUsers = async () => {
     const users = await User.findAll({
         include: [
             { model: InfoUser },
-            { model: Turn }
         ]
     });
     return users;

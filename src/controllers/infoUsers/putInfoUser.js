@@ -34,15 +34,9 @@ const putInfoUser = async (
         changedInfoUser.loseTime = loseTime
     }
 
-    console.log(changedInfoUser);
-    console.log(changedInfoUser.turnsTakedIt);
-    console.log(changedInfoUser.turnsFailed);
     changedInfoUser.pasTurns = changedInfoUser.turnsTakedIt + changedInfoUser.turnsFailed
-    console.log(changedInfoUser.pasTurns);
-
-
+   
     changedInfoUser.averageAssists = Math.round((changedInfoUser.turnsTakedIt * 100) / changedInfoUser.pasTurns)
-    console.log(changedInfoUser.averageAssists);
 
     if (changedInfoUser.pasTurns > 3) {
         if (changedInfoUser.averageAssists === 100) changedInfoUser.class = "A"
@@ -51,9 +45,6 @@ const putInfoUser = async (
         if (changedInfoUser.averageAssists >= 40 && changedInfoUser.averageAssists < 60) changedInfoUser.class = "D"
         if (changedInfoUser.averageAssists < 40) changedInfoUser.class = "E"
     }
-
-    console.log(changedInfoUser.class);
-
 
 
     await changedInfoUser.save()
